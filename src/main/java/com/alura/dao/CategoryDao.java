@@ -18,9 +18,12 @@ public class CategoryDao {
         this.em = em;
     }
     
-    
     public void save(Category category){
         this.em.persist(category);
         
+    }
+    
+    public void update(Category category){
+        this.em.merge(category);
     }
 }

@@ -19,17 +19,17 @@ import javax.persistence.EntityManager;
 public class RegistroProduct {
     public static void main(String[] args) {
         Category categories = new Category("CELULARES");
-        Product celular  = new Product("Xiaomi", "Celular POCO X3 PRO", new BigDecimal("1000"), categories);
         EntityManager em = JPAUtils.getEntityManager();//tomar la conexion a la DB
-        ProductDao productDao = new ProductDao(em);
-        CategoryDao categoryDao = new CategoryDao(em);
         
         em.getTransaction().begin();// inicio de la transaccion a la DB
         
-        categoryDao.save(categories);
-        productDao.save(celular);//persistencia en la DB
-
-        em.getTransaction().commit();//en caso se ejecute la transaccion
-        em.close();//cerrar conexion
+        em.persist(categories);
+        categories.setName("LIBROS");
+        em.flush();//sincrinoza cambios pendientes en la DB y cierra la conexion
+        em.clear();//limpia la persitencia
+        
+        categories = em.merge(categories);
+        categories.setName("Videojuegos");
+        em.flush();
     }
 }

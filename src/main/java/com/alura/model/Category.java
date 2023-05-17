@@ -22,6 +22,10 @@ public class Category {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+    public Category(){
+        
+    }
+    
     public Category(String name) {
         this.name = name;
     }

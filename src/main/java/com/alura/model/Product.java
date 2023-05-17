@@ -33,14 +33,16 @@ public class Product {
     @ManyToOne // relacion de uno muchos a uno
     private Category category;
 
+    public Product(){
+        
+    }
+    
     public Product(String name, String description, BigDecimal price, Category category) {
         this.name = name;
         this.description = description;
         this.price = price;
         this.category = category;
     }
-    
-    
 
     public Long getId() {
         return id;
