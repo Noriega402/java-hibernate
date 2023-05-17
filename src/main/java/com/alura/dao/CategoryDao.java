@@ -26,4 +26,8 @@ public class CategoryDao {
     public void update(Category category){
         this.em.merge(category);
     }
+    
+    public void remove(Category category){
+        this.em.remove(category);
+    }
 }

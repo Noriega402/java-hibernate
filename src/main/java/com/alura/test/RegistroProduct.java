@@ -31,5 +31,7 @@ public class RegistroProduct {
         categories = em.merge(categories);
         categories.setName("Videojuegos");
         em.flush();
+        em.remove(categories);//eliminar los datos del objeto
+        em.flush();
     }
 }
