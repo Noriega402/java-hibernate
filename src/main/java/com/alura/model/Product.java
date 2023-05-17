@@ -7,11 +7,10 @@ package com.alura.model;
 import java.math.BigDecimal;
 import java.time.LocalDate;
 import javax.persistence.Entity;
-import javax.persistence.EnumType;
-import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 /**
@@ -31,7 +30,7 @@ public class Product {
     private BigDecimal price;
     private LocalDate registerDate = LocalDate.now();
 
-    @Enumerated(EnumType.STRING)//para guardar un tipo de enumerado en formato varchar dentro de la DB
+    @ManyToOne // relacion de uno muchos a uno
     private Category category;
 
     public Product(String name, String description, BigDecimal price, Category category) {
