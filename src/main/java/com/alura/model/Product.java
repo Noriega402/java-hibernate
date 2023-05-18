@@ -19,7 +19,7 @@ import javax.persistence.Table;
  */
 
 @Entity
-@Table(name="products")//asignar nombre a la DB
+@Table(name="Product")//asignar nombre a la DB, el nombre de la tabla debe de ser igual al nombre de la clase
 public class Product {
 
     @Id
