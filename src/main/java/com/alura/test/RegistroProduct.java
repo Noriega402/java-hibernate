@@ -25,9 +25,9 @@ public class RegistroProduct {
         Product product = productDao.consultaId(1l);//buscar por id
         System.out.println(product.getName());//imprimir nombre del producto
         
-        List<Product> products = productDao.consultaForCategory("VIDEOJUEGOS");
+        BigDecimal price = productDao.consultaForPriceOfProduct("The legend of zelda: Tears of the kingdoom");
         System.out.println("Lista de productos:");
-        products.forEach(prod -> System.out.println(prod.getDescription()));
+        System.out.println(price);
     }
     
     public static void registerProduct(){
