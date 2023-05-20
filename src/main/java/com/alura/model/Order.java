@@ -6,6 +6,7 @@ package com.alura.model;
 
 import java.math.BigDecimal;
 import java.time.LocalDate;
+import java.util.ArrayList;
 import java.util.List;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -14,6 +15,7 @@ import javax.persistence.Id;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 /**
@@ -33,9 +35,8 @@ public class Order {
     @ManyToOne
     private Customer customer;
     
-    @ManyToMany
-    @JoinTable(name="items_orders")
-    private List<Product> products;
+    @OneToMany(mappedBy = "order")
+    private List<Items_order> items = new ArrayList<>();
 
     public Order() {
 
@@ -44,6 +45,11 @@ public class Order {
     public Order(Customer customer) {
         super();
         this.customer = customer;
+    }
+    
+    public void addItems(Items_order item){
+        item.setOrder(this);
+        this.items.add(item);
     }
 
     public Long getId() {
