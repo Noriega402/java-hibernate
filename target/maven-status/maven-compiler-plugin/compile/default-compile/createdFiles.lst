@@ -1,1 +1,7 @@
+com\alura\dao\CategoryDao.class
 com\alura\hibernate\Hibernate.class
+com\alura\test\RegistroProduct.class
+com\alura\model\Category.class
+com\alura\utils\JPAUtils.class
+com\alura\dao\ProductDao.class
+com\alura\model\Product.class

@@ -15,19 +15,26 @@ import javax.persistence.Table;
  * @author Daniel Noriega
  */
 @Entity
-@Table(name="Category")
-public class Category {
+@Table(name="Customer")
+public class Customer {
     
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String name;
+    private String dni;
 
-    public Category(){
+    public Customer(){
         
     }
+
+    public Customer(String name, String dni) {
+        super();
+        this.name = name;
+        this.dni = dni;
+    }
     
-    public Category(String name) {
+    public Customer(String name) {
         this.name = name;
     }
 
@@ -46,6 +53,12 @@ public class Category {
     public void setName(String name) {
         this.name = name;
     }
-    
-    
+
+    public String getDni() {
+        return dni;
+    }
+
+    public void setDni(String dni) {
+        this.dni = dni;
+    }
 }
