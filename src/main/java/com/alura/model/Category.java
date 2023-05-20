@@ -15,7 +15,7 @@ import javax.persistence.Table;
  * @author Daniel Noriega
  */
 @Entity
-@Table(name="Category")
+@Table(name="categories")
 public class Category {
     
     @Id

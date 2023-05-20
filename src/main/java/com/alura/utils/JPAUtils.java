@@ -14,7 +14,7 @@ import javax.persistence.Persistence;
  */
 public class JPAUtils {
     //Creacion del factory para conexion a la DB
-    private static EntityManagerFactory factory = Persistence.createEntityManagerFactory("tienda"); // viene de la opcion de xml
+    private static EntityManagerFactory factory = Persistence.createEntityManagerFactory("daniel_denc"); // viene de la opcion de xml
     public static EntityManager getEntityManager(){
         return factory.createEntityManager();
     }

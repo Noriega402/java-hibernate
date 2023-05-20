@@ -6,10 +6,13 @@ package com.alura.model;
 
 import java.math.BigDecimal;
 import java.time.LocalDate;
+import java.util.List;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
@@ -18,18 +21,21 @@ import javax.persistence.Table;
  * @author Daniel Noriega
  */
 @Entity
-@Table(name = "Order")
+@Table(name = "orders")
 public class Order {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private LocalDate fecha = LocalDate.now();
-    private Long customer_id;
     private BigDecimal valorTotal;
 
     @ManyToOne
     private Customer customer;
+    
+    @ManyToMany
+    @JoinTable(name="items_orders")
+    private List<Product> products;
 
     public Order() {
 
@@ -54,14 +60,6 @@ public class Order {
 
     public void setFecha(LocalDate fecha) {
         this.fecha = fecha;
-    }
-
-    public Long getCustomer_id() {
-        return customer_id;
-    }
-
-    public void setCustomer_id(Long customer_id) {
-        this.customer_id = customer_id;
     }
 
     public BigDecimal getValorTotal() {
