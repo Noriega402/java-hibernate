@@ -8,6 +8,7 @@ import java.math.BigDecimal;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -30,12 +31,13 @@ public class Order {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private LocalDate fecha = LocalDate.now();
-    private BigDecimal valorTotal;
+    private BigDecimal valorTotal = new BigDecimal(500);
 
     @ManyToOne
     private Customer customer;
     
-    @OneToMany(mappedBy = "order")
+    @OneToMany(mappedBy = "order", cascade = CascadeType.ALL) // se usa para que entienda que es una relacion bidireccional
+    // de lo contrario JPA entendera que se trata de otra relacion.
     private List<Items_order> items = new ArrayList<>();
 
     public Order() {
@@ -50,6 +52,7 @@ public class Order {
     public void addItems(Items_order item){
         item.setOrder(this);
         this.items.add(item);
+        this.valorTotal = this.valorTotal.add(item.getValue());
     }
 
     public Long getId() {

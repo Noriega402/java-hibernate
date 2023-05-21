@@ -80,4 +80,8 @@ public class Items_order {
     public void setOrder(Order order) {
         this.order = order;
     }
+
+    public BigDecimal getValue() {
+        return this.unitPrice.multiply(new BigDecimal(this.quantity));
+    }
 }
