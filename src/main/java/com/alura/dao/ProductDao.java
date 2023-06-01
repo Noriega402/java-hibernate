@@ -4,7 +4,6 @@
  */
 package com.alura.dao;
 
-import com.alura.model.Category;
 import com.alura.model.Product;
 import java.math.BigDecimal;
 import java.util.List;
@@ -44,8 +43,7 @@ public class ProductDao {
         return em.createQuery(jpql, Product.class).setParameter("name", name).getResultList();
     }
     
-    public BigDecimal consultaForPriceOfProduct(String name){
-        String jpql = "SELECT P.price FROM Product AS P WHERE P.name = :name";
-        return em.createQuery(jpql, BigDecimal.class).setParameter("name", name).getSingleResult();
+    public BigDecimal consultaForPriceOfProduct(String name){ //tutilizando  namedQuerys
+        return em.createNamedQuery("Producto.consultaDePrecio", BigDecimal.class).setParameter("name", name).getSingleResult();
     }
 }

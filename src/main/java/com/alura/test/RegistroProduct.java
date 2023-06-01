@@ -14,7 +14,9 @@ import com.alura.model.Items_order;
 import com.alura.model.Order;
 import com.alura.model.Product;
 import com.alura.utils.JPAUtils;
+import com.alura.vo.relatorioDeVenta;
 import java.math.BigDecimal;
+import java.util.List;
 import javax.persistence.EntityManager;
 
 /**
@@ -47,6 +49,9 @@ public class RegistroProduct {
         System.out.println("El valor total de ventas es: " + valorVentas);
         System.out.println("El valor total minimo es: " + valorMinimo);
         System.out.println("El valor total de maximo es: " + valorMaximo);
+        
+        List<relatorioDeVenta> relatorio = orderDao.relatorioDeVentasVO();
+        relatorio.forEach(System.out::println);    
     }
     
     public static void registerProduct(){

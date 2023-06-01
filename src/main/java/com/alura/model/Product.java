@@ -11,6 +11,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
+import javax.persistence.NamedQuery;
 import javax.persistence.Table;
 
 /**
@@ -20,6 +21,7 @@ import javax.persistence.Table;
 
 @Entity
 @Table(name="products")//asignar nombre a la DB, el nombre de la tabla debe de ser igual al nombre de la clase
+@NamedQuery(name = "Producto.consultaDePrecio", query = "SELECT P FROM Product AS P WHERE P.name = :name")
 public class Product {
 
     @Id
